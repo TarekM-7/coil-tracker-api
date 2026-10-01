@@ -1,8 +1,8 @@
 import express from 'express'
-import productionOrderRouter from './productionOrders.routes'
+import productionOrdersRouter from './productionOrders.routes'
 
 const server = express()
 
-server.use('/api/production-orders', productionOrderRouter)
+server.use('/api/production-orders', productionOrdersRouter)
 
 export default server
