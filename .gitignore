@@ -1,17 +1,12 @@
-# Dependencias
 node_modules/
 
-# Build
 dist/
 
-# Variables de entorno (credenciales)
 .env
 .env.*
 !.env.example
 
-# Reportes de tests
 coverage/
 
-# Sistema
 .DS_Store
 Thumbs.db
