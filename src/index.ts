@@ -1,3 +1,7 @@
-import sumar from "./server";
+import server from "./server";
 
-console.log(sumar());
+const port = process.env.PORT || 4000;
+
+server.listen(port, () => {
+    console.log(`Listening to Port ${port}`)
+})
