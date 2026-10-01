@@ -1,20 +1,18 @@
-import server from "./server";
-import db from "./config/db";
-
-async function connectDB() {
-    try {
-        await db.authenticate()
-        db.sync()
-        console.log('Connected to DB')
-    } catch (error) {
-        console.log(error)
-        console.log('Error Connecting to DB from ')
-    }
-}
-connectDB()
+import 'dotenv/config'
+import server, { connectDB } from "./server";
 
 const port = process.env.PORT || 4000;
 
-server.listen(port, () => {
-    console.log(`Listening to Port ${port}`)
+async function startServer(){
+    try {
+        await connectDB()
+        server.listen(port, () => {
+            console.log(`Listening to Port ${port}`)
 })
+    } catch (error) {
+        console.log(error)
+        process.exit(1)
+    }
+}
+
+startServer()
