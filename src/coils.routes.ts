@@ -2,10 +2,14 @@ import { Router } from "express";
 import { createCoil, deleteCoil, getCoilById, getCoils, updateCoil } from "./handlers/coil";
 import { handleInputErrors, validateCoilExists } from "./middleware";
 import { coilValidation, idValidation } from "./validators/coil";
+import { paginationValidation } from "./validators/pagination";
 
 const router = Router()
 
-router.get('/', getCoils)
+router.get('/', 
+    paginationValidation, 
+    handleInputErrors, 
+    getCoils)
 
 router.get('/:id', 
     idValidation,
