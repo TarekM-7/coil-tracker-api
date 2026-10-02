@@ -10,6 +10,7 @@ router.get('/', getCoils)
 router.get('/:id', 
     param('id')
         .isInt({min: 1, max: 2147483647}).withMessage('Invalid ID'),
+    handleInputErrors,
     getCoilById
 )
 
