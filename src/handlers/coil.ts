@@ -42,8 +42,8 @@ export const updateCoil: RequestHandler<{ id: string }> = async (req, res) => {
         })
     }
 
-    await coil.update(req.body)
-    await coil.save()
+    const { name, weight, width, progression, thickness } = req.body
+    await coil.update({ name, weight, width, progression, thickness })
     
     res.json({
         data: coil
