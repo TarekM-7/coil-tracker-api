@@ -11,6 +11,7 @@ export async function connectDB() {
 
 const server = express()
 
+server.use(express.json())
 server.use('/api/coils', coilsRouter)
 
 export default server
