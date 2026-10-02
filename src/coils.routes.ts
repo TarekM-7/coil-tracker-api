@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { body, param } from 'express-validator'
 import { createCoil, getCoilById, getCoils, updateCoil } from "./handlers/coil";
 import { handleInputErrors } from "./middleware";
 import { coilValidation, idValidation } from "./validators/coil";
