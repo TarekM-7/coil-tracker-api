@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { createCoil } from "./handlers/coil";
 
 const router = Router()
 
@@ -8,11 +9,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
-    res.json({
-        msg: 'From Post'
-    })
-})
+router.post('/', createCoil)
 
 router.put('/', (req, res) => {
     res.json({
