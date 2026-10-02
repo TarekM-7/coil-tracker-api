@@ -1,11 +1,17 @@
 import { Router } from "express";
-import { body } from 'express-validator'
-import { createCoil, getCoils } from "./handlers/coil";
+import { body, param } from 'express-validator'
+import { createCoil, getCoilById, getCoils } from "./handlers/coil";
 import { handleInputErrors } from "./middleware";
 
 const router = Router()
 
 router.get('/', getCoils)
+
+router.get('/:id', 
+    param('id')
+        .isInt({min: 1, max: 2147483647}).withMessage('Invalid ID'),
+    getCoilById
+)
 
 router.post('/', 
     body('name')

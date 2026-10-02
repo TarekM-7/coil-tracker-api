@@ -10,6 +10,20 @@ export const getCoils: RequestHandler = async (req, res) => {
     })
 }
 
+export const getCoilById: RequestHandler<{ id: string }> = async (req, res) => {
+    const { id } = req.params
+    const coil = await Coil.findByPk(id)
+
+    if(!coil){
+        return res.status(404).json({
+            errors: [{ msg: 'Coil not Found' }] 
+        })
+    }
+    res.json({
+        data: coil
+    })
+}
+
 export const createCoil: RequestHandler = async (req, res) => {
     const { name, weight, width, progression, thickness } = req.body
     const coil = await Coil.create({ name, weight, width, progression, thickness })
