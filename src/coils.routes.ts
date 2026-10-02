@@ -27,12 +27,6 @@ router.put('/:id',
     validateCoilExists,
     updateCoil)
 
-router.patch('/', (req, res) => {
-    res.json({
-        msg: 'From Patch'
-    })
-})
-
 router.delete('/', (req, res) => {
     res.json({
         msg: 'From Delete'
