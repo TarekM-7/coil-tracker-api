@@ -1,15 +1,11 @@
 import { Router } from "express";
 import { body } from 'express-validator'
-import { createCoil } from "./handlers/coil";
+import { createCoil, getCoils } from "./handlers/coil";
 import { handleInputErrors } from "./middleware";
 
 const router = Router()
 
-router.get('/', (req, res) => {
-    res.json({
-        msg: 'From Get'
-    })
-})
+router.get('/', getCoils)
 
 router.post('/', 
     body('name')
