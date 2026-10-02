@@ -25,7 +25,7 @@ export const validateCoilExists: RequestHandler<{ id: string }> = async (req, re
     const coil = await Coil.findByPk(req.params.id)
     if(!coil){
         return res.status(404).json({
-            errors: [{ msg: 'Coil not Found' }] 
+            errors: [{ msg: 'Coil not found' }] 
         })
     }
     req.coil = coil

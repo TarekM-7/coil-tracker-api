@@ -24,6 +24,7 @@ router.put('/:id',
     idValidation,
     coilValidation,
     handleInputErrors,
+    validateCoilExists,
     updateCoil)
 
 router.patch('/', (req, res) => {
