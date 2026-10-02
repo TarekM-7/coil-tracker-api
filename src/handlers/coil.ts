@@ -32,3 +32,20 @@ export const createCoil: RequestHandler = async (req, res) => {
     })
 }
 
+export const updateCoil: RequestHandler<{ id: string }> = async (req, res) => {
+    const { id } = req.params
+    const coil = await Coil.findByPk(id)
+
+    if(!coil){
+        return res.status(404).json({
+            errors: [{ msg: 'Coil not Found' }] 
+        })
+    }
+
+    await coil.update(req.body)
+    await coil.save()
+    
+    res.json({
+        data: coil
+    })
+} 
