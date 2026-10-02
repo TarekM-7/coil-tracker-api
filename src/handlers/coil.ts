@@ -33,3 +33,8 @@ export const updateCoil: RequestHandler<{ id: string }> = async (req, res) => {
         data: req.coil
     })
 } 
+
+export const deleteCoil: RequestHandler<{ id: string }> = async (req, res) => {
+    await req.coil!.destroy()
+    res.status(204).end()
+}

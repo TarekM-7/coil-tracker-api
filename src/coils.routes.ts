@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createCoil, getCoilById, getCoils, updateCoil } from "./handlers/coil";
+import { createCoil, deleteCoil, getCoilById, getCoils, updateCoil } from "./handlers/coil";
 import { handleInputErrors, validateCoilExists } from "./middleware";
 import { coilValidation, idValidation } from "./validators/coil";
 
@@ -27,10 +27,11 @@ router.put('/:id',
     validateCoilExists,
     updateCoil)
 
-router.delete('/', (req, res) => {
-    res.json({
-        msg: 'From Delete'
-    })
-})
+router.delete('/:id', 
+    idValidation,
+    handleInputErrors,
+    validateCoilExists,    
+    deleteCoil
+)
 
 export default router
