@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { body } from 'express-validator'
 import { createCoil } from "./handlers/coil";
+import { handleInputErrors } from "./middleware";
 
 const router = Router()
 
@@ -27,6 +28,7 @@ router.post('/',
     body('thickness')
         .notEmpty().withMessage('Thickness is required').bail()
         .isFloat({ gt: 0, max: 999999.9999 }).withMessage('Thickness must be a number greater than 0 and up to 999999.9999'),
+    handleInputErrors,
     createCoil
 )
 
