@@ -2,7 +2,9 @@ import { RequestHandler } from "express"
 import Coil from "../models/Coil.model"
 
 export const getCoils: RequestHandler = async (req, res) => {
-    const coils = await Coil.findAll()
+    const coils = await Coil.findAll({
+        order: [['createdAt', 'DESC']]
+    })
     res.json({
         data: coils
     })
