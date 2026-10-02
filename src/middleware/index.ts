@@ -1,4 +1,4 @@
-import { RequestHandler } from 'express'
+import { ErrorRequestHandler, RequestHandler } from 'express'
 import { validationResult } from 'express-validator'
 
 export const handleInputErrors: RequestHandler = (req, res, next) => {
@@ -9,4 +9,13 @@ export const handleInputErrors: RequestHandler = (req, res, next) => {
     }
 
     next()
+}
+
+export const handleErrors: ErrorRequestHandler = (err, req, res, next) => {
+    console.log(err)
+
+    const status = err.status || 500
+    const message= status === 500 ? 'Internal server error' : err.message
+
+    res.status(status).json({ error: message })
 }
