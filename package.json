@@ -1,7 +1,7 @@
 {
   "name": "coil-tracker-api",
   "version": "1.0.0",
-  "description": "Server with express",
+  "description": "REST API to track steel coils, built with Express, TypeScript and PostgreSQL",
   "license": "ISC",
   "author": "Tarek Mariscal",
   "main": "dist/index.js",
