@@ -31,3 +31,7 @@ export const validateCoilExists: RequestHandler<{ id: string }> = async (req, re
     req.coil = coil
     next()
 }
+
+export const notFound: RequestHandler = (req, res) => {
+    res.status(404).json({ errors: [{ msg: 'Route not found' }] })
+}
