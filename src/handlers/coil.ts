@@ -3,7 +3,7 @@ import Coil from "../models/Coil.model"
 
 export const getCoils: RequestHandler = async (req, res) => {
     const coils = await Coil.findAll({
-        order: [['createdAt', 'DESC']]
+        order: [['createdAt', 'DESC'], ['id', 'DESC']]
     })
     res.json({
         data: coils
