@@ -12,7 +12,9 @@ router.get('/', (req, res) => {
 
 router.post('/', 
     body('name')
-        .notEmpty().withMessage('Name cannot be empty'),
+        .trim()
+        .notEmpty().withMessage('Name cannot be empty').bail()
+        .isLength({ max: 100 }).withMessage('Name must be up to 100 characters'),
     body('weight')
         .notEmpty().withMessage('Weight is required').bail()
         .isFloat({ gt: 0, max: 999999.9999 }).withMessage('Weight must be a number greater than 0 and up to 999999.9999'),
