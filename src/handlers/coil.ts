@@ -1,8 +1,8 @@
-import { Request, Response } from "express"
+import { RequestHandler } from "express"
 
-export const createCoil = (req: Request, res: Response) => {
+export const createCoil: RequestHandler = (req, res) => {
     res.json({
-        msg: 'From Post'
+        msg: 'Desde Post'
     })
 }
 
